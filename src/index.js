@@ -1,5 +1,5 @@
 const express = require("express");
-
+const user = require('./routes/users');
 const app = express();
 const port = 3000;
 
@@ -9,9 +9,7 @@ app.get("/", (req, res) => {
     res.send("Bienvenido");
 });
 
-app.get("/users", (req, res) => {
-    res.send("Mostrando todos los usuarios");
-});
+app.use('/users', user);
 
 // ahora se agrega para escuchar el puesrto
 app.listen(port, () => {
