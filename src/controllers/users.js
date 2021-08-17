@@ -1,18 +1,23 @@
-const path = require("path");
-const root = path.join(__dirname, "../public");
+const users = [
+    { id: 1, nombre: 'Patricio', edad: 35 },
+    { id: 2, nombre: 'Juan', edad: 25 },
+    { id: 3, nombre: 'José', edad: 22 }
+]
+
 const getUsers = (req, res) => {
-    res.sendFile("users.html", { root: root });
+    // enviar datos a una plantilla ejs
+    res.render("users", { users: users });
 };
 
 const createUser = (req, res) => {
-    res.sendFile("create-user.html", { root: root });
+    res.render("create-user");
 };
 
 const updateUser = (req, res) => {
-    res.sendFile("update-user.html", { root: root });
+    res.render("update-user");
 };
 const deleteUser = (req, res) => {
-    res.sendFile("delete-user.html", { root: root });
+    res.render("delete-user");
 };
 
 module.exports = {
