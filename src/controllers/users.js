@@ -9,20 +9,53 @@ const getUsers = (req, res) => {
     res.render("users", { users: users });
 };
 
-const createUser = (req, res) => {
+const getCreateUser = (req, res) => {
     res.render("create-user");
 };
 
-const updateUser = (req, res) => {
+const getUpdateUser = (req, res) => {
     res.render("update-user");
 };
-const deleteUser = (req, res) => {
+const getDeleteUser = (req, res) => {
     res.render("delete-user");
 };
 
+const createUser = (req, res) => {
+    // se mostraran los datos ingresados(sin bd )
+    users.push(req.body)
+    res.render("users", { users });
+}
+
+const updateUser = (req, res) => {
+    const param = req.params.id
+    for (let i = 0; i < users.length; i++) {
+        if (param == users[i].id) {
+            users[i].nombre = req.body.nombre
+            users[i].edad = req.body.edad
+            break
+        }
+    }
+    res.render("users", { users });
+}
+
+const deleteUser = (req, res) => {
+    const param = req.params.id
+    for (let i = 0; i < users.length; i++) {
+        if (param == users[i].id) {
+            // que elimine el usuario actual (el que encontro) y el numero que solo elimine uno
+            users.splice(i, 1)
+            break
+        }
+    }
+    res.render("users", { users });
+}
+
 module.exports = {
     getUsers,
+    getCreateUser,
+    getUpdateUser,
+    getDeleteUser,
     createUser,
     updateUser,
-    deleteUser,
+    deleteUser
 };
