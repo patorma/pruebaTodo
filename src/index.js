@@ -2,6 +2,7 @@ const express = require("express");
 const user = require('./routes/users');
 const app = express();
 const path = require('path')
+const connection = require('./connection')
 const loggedMiddleware = require('./middlewares/logged')
 
 // settings (configuración)
