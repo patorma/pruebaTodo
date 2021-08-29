@@ -16,9 +16,10 @@ app.set('views', path.join(__dirname, 'views'))
 //middleware se ejecuta cuando el servidor recibe una peticion y antes que este envie una respuesta al liente
 //app.use(loggedMiddleware.isLogged)
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(express.json()) // con esto le digo que acepte datos tipos json
-
-// rutas
+    //app.use(express.json())  con esto le digo que acepte datos tipos json
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }))
+    // rutas
 
 app.get("/", (req, res) => {
     res.render('index')

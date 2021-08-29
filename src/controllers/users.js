@@ -1,12 +1,22 @@
-const users = [
-    { id: 1, nombre: 'Patricio', edad: 35 },
-    { id: 2, nombre: 'Juan', edad: 25 },
-    { id: 3, nombre: 'José', edad: 22 }
-]
+const connection = require('../connection')
+    // const users = [
+    //     { id: 1, nombre: 'Patricio', edad: 35 },
+    //     { id: 2, nombre: 'Juan', edad: 25 },
+    //     { id: 3, nombre: 'José', edad: 22 }
+    // ]
 
 const getUsers = (req, res) => {
-    // enviar datos a una plantilla ejs
-    res.render("users", { users: users });
+    const sql = 'select * from users';
+    connection.query(sql, (err, result) => {
+        if (err) {
+            console.log('Ha ocurrido un error' + err.message)
+        } else {
+            console.log(result)
+                // enviar datos a una plantilla ejs
+            res.render("users", { users: result });
+        }
+    })
+
 };
 
 const getCreateUser = (req, res) => {
@@ -21,9 +31,20 @@ const getDeleteUser = (req, res) => {
 };
 
 const createUser = (req, res) => {
+    const { name, age } = req.body;
     // se mostraran los datos ingresados(sin bd )
-    users.push(req.body)
-    res.render("users", { users });
+    const sql = 'INSERT INTO users (name,age) VALUES (?,?)'
+
+    connection.query(sql, [name, age], (err) => {
+        if (err) {
+            console.log('Ha ocurrido un error' + err.message)
+
+        } else {
+            console.log('Usuario registrado')
+            res.redirect('/users/all');
+        }
+    })
+
 }
 
 const updateUser = (req, res) => {
