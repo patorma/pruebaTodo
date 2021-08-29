@@ -10,6 +10,13 @@
 
 <body>
     <h1>Actualizar usuario</h1>
+    <form action="/users/update/<%= user[0]['id']%>" method="POST">
+        <label for="name">Nombre</label>
+        <input type="text" name="name" id="name" value="<%= user[0]['name']%>" />
+        <label for="age">Edad</label>
+        <input type="number" name="age" id="age" value="<%= user[0]['age']%>"/>
+        <input type="submit" value="Actualiar" />
+    </form>
 </body>
 
 </html>
