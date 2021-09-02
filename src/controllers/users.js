@@ -35,7 +35,16 @@ const getUpdateUser = (req, res) => {
   });
 };
 const getDeleteUser = (req, res) => {
-  res.render("delete-user");
+  const param = req.params.id;
+  const sql = "SELECT * FROM users WHERE id=?";
+  connection.query(sql, param, (err, result) => {
+    if (err) {
+      console.log("Ha ocurrido un error" + err.message);
+    } else {
+      console.log(result);
+      res.render("delete-user", { user: result });
+    }
+  });
 };
 
 const createUser = (req, res) => {
@@ -71,15 +80,19 @@ const updateUser = (req, res) => {
 
 const deleteUser = (req, res) => {
   const param = req.params.id;
-  for (let i = 0; i < users.length; i++) {
-    if (param == users[i].id) {
-      // que elimine el usuario actual (el que encontro) y el numero que solo elimine uno
-      users.splice(i, 1);
-      break;
-    }
-  }
-  res.render("users", { users });
-};
+  // se agrega funcionalidad para actualizar usuario
+  const sql = `delete from users where id= ${param}`
+  connection.query(sql,(err,result)=>{
+      if(err){
+          console.log('Ha ocurrido un eror'+ err.message)
+      }else {
+          console.log('Usuario eliminado')
+          res.redirect('/users/all')
+      }
+    })
+
+}
+
 
 module.exports = {
   getUsers,

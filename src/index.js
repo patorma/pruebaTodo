@@ -29,5 +29,5 @@ app.use('/users', user);
 
 // ahora se agrega para escuchar el puesrto
 app.listen(app.get('port'), () => {
-    console.log(`Mi ${app.get('title')} está corriendoen el puerto ${app.get('port')}`);
+    console.log(`Mi ${app.get('title')} está corriendo en el puerto ${app.get('port')}`);
 })

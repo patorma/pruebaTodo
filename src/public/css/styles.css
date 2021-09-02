@@ -1,28 +1,57 @@
+:root {
+  --border: none;
+  --color: white;
+  --padding: 10px 15px;
+  --text-align: center;
+  --text-decoration: none;
+  --red: red;
+  --green: green;
+}
+
 .table {
-    margin-left: auto;
-    margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .table tr td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
 .table tr .btn-update {
-    background-color: green;
-    border: none;
-    color: white;
-    padding: 10px 15px;
-    text-align: center;
-    text-decoration: none;
+  background-color: var(--green);
+  border: var(--border);
+  color: var(--color);
+  padding: var(--padding);
+  text-align: var(--text-align);
+  text-decoration: var(--text-decoration);
 }
 
 .table tr .btn-delete {
-    background-color: red;
-    border: none;
-    color: white;
-    padding: 10px 15px;
-    text-align: center;
-    text-decoration: none;
+  background-color: var(--red);
+  border: var(--border);
+  color: var(--color);
+  padding: var(--padding);
+  text-align: var(--text-align);
+  text-decoration: var(--text-decoration);
+}
+
+.btn-cancelar{
+
+    background-color: var(--green);
+    border: var(--border);
+    color: var(--color);
+    padding: var(--padding);
+    text-align: var(--text-align);
+    text-decoration: var(--text-decoration);
+}
+
+.btn-borrar{
+    background-color: var(--red);
+    border: var(--border);
+    color: var(--color);
+    padding: var(--padding);
+    text-align: var(--text-align);
+    text-decoration: var(--text-decoration);
 }
